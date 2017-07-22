@@ -1,4 +1,4 @@
-package com.wqh.searcher;
+package com.wqh.searcher.utils;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

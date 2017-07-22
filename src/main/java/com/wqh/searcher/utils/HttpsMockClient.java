@@ -1,4 +1,4 @@
-package com.wqh.searcher;
+package com.wqh.searcher.utils;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -6,14 +6,14 @@ import java.net.Socket;
 import java.security.Key;
 import java.security.SecureRandom;
 
-public class HttpsJDTest extends  HttpsMockBase {  
+public class HttpsMockClient extends  HttpsMockBase {  
     static DataInputStream in;  
     static DataOutputStream out;  
     static Key key;  
     public static void main(String args[]) throws  Exception{  
         int port=80;  
-        Socket s=new Socket("183.56.147.1",port);  
-//        Socket s=new Socket("localhost",port);  
+//        Socket s=new Socket("183.56.147.1",port);  
+        Socket s=new Socket("localhost",port);  
         s.setReceiveBufferSize(102400);  
         s.setKeepAlive(true);  
         in=new DataInputStream(s.getInputStream());  
