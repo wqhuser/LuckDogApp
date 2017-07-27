@@ -12,6 +12,8 @@
 		<httpclient.version>4.2.5</httpclient.version>
 		<httpcore.version>4.2.4</httpcore.version>
 		<spring.version>4.3.3.RELEASE</spring.version>
+		<junit.version>4.9</junit.version>
+		<log4j.version>1.2.16</log4j.version>
 	</properties>
 	<dependencies>
 		<!-- httpcomponents -->
@@ -78,6 +80,21 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>${commons-logging.version}</version>
+		</dependency>
+
+		<!-- Junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 
 	</dependencies>
