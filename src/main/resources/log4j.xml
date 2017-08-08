@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
-<log4j:configuration threshold="debug"
-	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
 	<appender name="console.CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<param name="threshold" value="debug" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<!-- <param name="ConversionPattern" value="%d{HH:mm:ss}[%C.%M(%L)-%p] 
-				%m%n"/> -->
 			<param name="ConversionPattern" value="%d{HH:mm:ss}[%C(%L)-%p] %m%n" />
 		</layout>
 	</appender>
@@ -35,47 +32,28 @@
 	</appender>
 	<appender name="file.html.HTML" class="org.apache.log4j.RollingFileAppender">
 		<param name="threshold" value="error" />
-		<param name="file" value="B:/log/debug.html" />
+		<param name="file" value="B:/log/error.html" />
 		<param name="maxFileSize" value="1024KB" />
 		<param name="maxBackupIndex" value="5" />
 		<param name="append" value="true" />
-		<layout class="org.apache.log4j.HTMLLayout" />
+		<layout class="org.apache.log4j.HTMLLayout">
+			<param name="LocationInfo" value="true" />
+		</layout>
 	</appender>
 
-	<!-- <appender name="mail.MAIL" class="org.apache.log4j.net.SMTPAppender">
-		<param name="threshold" value="debug" />
-		<param name="threshold" value="fatal"/>
-		<param name="BufferSize" value="10" />
-		<param name="From" value="yangguanjun@justonetech.com" />
-		<param name="SMTPHost" value="www.justonetech.com" />
-		<param name="Subject" value="juyee-log4jMessage" />
-		<param name="To" value="yangguanjun@justonetech.com" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss.SSS} [%p]-[%c] %m%n" />
-		</layout>
-	</appender> -->
+	<logger name="org.apache.http">
+		<level value="ERROR" />
+	</logger>
 
-	<!-- <category name="com.juyee" additivity="true">
-		<priority value="info" />
-		<appender-ref ref="console.CONSOLE" />
-		<appender-ref ref="file.text.DATE_FILE" />
-	</category> -->
+	<logger name="org.springframework">
+		<level value="ERROR" />
+	</logger>
 
-	<category name="com.wqh" additivity="true">
+	<root>
 		<priority value="debug" />
 		<appender-ref ref="console.CONSOLE" />
 		<appender-ref ref="file.text.DATE_FILE" />
-	</category>
-
-	<category name="org" additivity="true">
-		<priority value="WARN" />
-		<appender-ref ref="console.CONSOLE" />
-		<!-- <appender-ref ref="file.text.DATE_FILE" /> -->
-	</category>
-
-	<root>
-		<!-- <level value="trace" /> <level value="debug" /> <level value="info" 
-			/> <level value="warn" /> <level value="error" /> <level value="fatal" /> 
-			<appender-ref ref="console.CONSOLE" /> <appender-ref ref="file.text.DATE_FILE"/> -->
+		<appender-ref ref="file.text.SYSFILE" />
+		<appender-ref ref="file.html.HTML" />
 	</root>
 </log4j:configuration>
